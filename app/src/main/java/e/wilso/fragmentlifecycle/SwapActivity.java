@@ -15,7 +15,6 @@ public class SwapActivity extends AppCompatActivity {
    private FragmentManager fragManager;
    private ContactFragment contact;
    private DetailFragment detail;
-   private boolean change = true;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +43,9 @@ public class SwapActivity extends AppCompatActivity {
 
    private void swap() {
 
-      if(change) {
-         change = false;
          android.support.v4.app.FragmentTransaction trans = fragManager.beginTransaction();
          trans.replace(R.id.container, detail);
          trans.addToBackStack(null);
          trans.commit();
-      }
-      else {
-         change = true;
-         android.support.v4.app.FragmentTransaction trans = fragManager.beginTransaction();
-         trans.replace(R.id.container, contact);
-         trans.addToBackStack(null);
-         trans.commit();
-      }
    }
 }
